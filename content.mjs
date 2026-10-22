@@ -2,6 +2,108 @@
 // Each source headline is a direct external link; descriptions distinguish facts from judgment.
 export const grievances = [
   {
+    id: 'tariff-costs', category: 'Economic stewardship',
+    line: 'He has imposed sweeping import taxes whose costs have fallen chiefly upon American households and businesses.',
+    headline: 'Federal Reserve research finds U.S. firms and consumers bore most of the cost of the 2025 tariffs, which also raised consumer prices.',
+    summary: 'New York Fed researchers estimated that nearly 90% of the 2025 tariff burden reached U.S. import prices, while Federal Reserve Board economists estimated a 0.8% increase in core personal-consumption prices through February 2026 attributable to tariffs. A separate 2026 Supreme Court decision invalidated the emergency-powers basis for major tariffs. The administration argues tariffs protect American industries and raise revenue; these studies measure costs rather than deciding the net long-run effects of every trade measure.',
+    sources: [
+      ['Who Is Paying for the 2025 U.S. Tariffs?', 'Federal Reserve Bank of New York', 'Feb. 12, 2026', 'https://libertystreeteconomics.newyorkfed.org/2026/02/who-is-paying-for-the-2025-u-s-tariffs/'],
+      ['Detecting Tariff Effects on Consumer Prices in Real Time – Part II', 'Federal Reserve Board', 'Apr. 8, 2026', 'https://www.federalreserve.gov/econres/notes/feds-notes/detecting-tariff-effects-on-consumer-prices-in-real-time-part-II-20260408.html'],
+      ['US Supreme Court strikes down Trump’s global tariffs', 'Reuters', 'Feb. 20, 2026', 'https://www.reuters.com/legal/government/us-supreme-court-rejects-trumps-global-tariffs-2026-02-20/']
+    ]
+  },
+  {
+    id: 'public-debt', category: 'Economic stewardship',
+    line: 'He has signed a fiscal law that increases the public debt while shifting resources away from poorer households.',
+    headline: 'Congress’s nonpartisan budget office projected that the 2025 tax-and-spending law would add $3.4 trillion to deficits over ten years.',
+    summary: 'The Congressional Budget Office estimated that Public Law 119-21 would reduce federal revenue by $4.5 trillion and direct spending by $1.1 trillion, increasing cumulative deficits by $3.4 trillion through 2034 under its updated January 2025 baseline. CBO separately estimated losses in resources for lower-income households and gains farther up the distribution. Supporters cite tax relief and economic growth; the figures are projections under an explicitly identified baseline, not amounts already borrowed.',
+    sources: [
+      ['Estimated Budgetary Effects of Public Law 119-21', 'Congressional Budget Office', 'Jul. 21, 2025', 'https://www.cbo.gov/publication/61570'],
+      ['Distributional Effects of Public Law 119-21', 'Congressional Budget Office', 'Aug. 11, 2025', 'https://www.cbo.gov/publication/61367']
+    ]
+  },
+  {
+    id: 'health-coverage', category: 'Economic stewardship',
+    line: 'He has accepted reductions in health coverage that place families, clinics, and rural communities at risk.',
+    headline: 'CBO projected that Medicaid-related provisions of the 2025 budget law would leave 7.5 million additional people uninsured by 2034.',
+    summary: 'The official estimate for the law’s Medicaid and related chapter is 7.5 million more uninsured in 2034, alongside about $887 billion in projected deficit reduction from that chapter. Wider estimates that include other health-law provisions are larger and should not be confused with this specific figure. Supporters describe the law as addressing eligibility and waste; critics warn about loss of coverage, uncompensated care, and strain on rural providers. These are forecasts, not a count of people already removed from insurance.',
+    sources: [
+      ['Public Law 119-21: Supplemental Cost Estimate for Medicaid Provisions', 'Congressional Budget Office', 'Oct. 28, 2025', 'https://www.cbo.gov/publication/61837'],
+      ['The Changes Coming to the ACA, Medicaid, and Medicare', 'Johns Hopkins Bloomberg School of Public Health', 'Jul. 30, 2025', 'https://publichealth.jhu.edu/2025/the-changes-coming-to-the-aca-medicaid-and-medicare']
+    ]
+  },
+  {
+    id: 'domestic-troops', category: 'Constitutional restraint',
+    line: 'He has sought to employ the nation’s military against domestic disorder without the exceptional conditions the law requires.',
+    headline: 'Federal courts, including the Supreme Court, blocked National Guard deployments to several American cities after finding serious deficiencies in the claimed legal authority.',
+    summary: 'The administration federalized or sought to deploy Guard troops in Los Angeles, Portland, Chicago, and other cities to protect personnel and property during immigration protests. A Portland judge appointed by Trump ruled that no rebellion justified the deployment; the Supreme Court declined to authorize the Chicago operation at its preliminary stage. The government cited threats to federal agents, and other deployment disputes had differing procedural outcomes. A preliminary stay is not a final ruling on every deployment.',
+    sources: [
+      ['US Supreme Court rejects Trump’s military deployment in Chicago area, for now', 'Reuters', 'Dec. 23, 2025', 'https://www.reuters.com/world/us-supreme-court-rejects-trumps-military-deployment-chicago-area-now-2025-12-23/'],
+      ['Legal battles mount over Trump’s National Guard deployments to U.S. cities', 'Reuters', 'Oct. 24, 2025', 'https://www.reuters.com/world/us/legal-battles-mount-over-trumps-national-guard-deployments-us-cities-2025-10-24/']
+    ]
+  },
+  {
+    id: 'erroneous-deportation', category: 'Constitutional restraint',
+    line: 'He has permitted removal of residents without the hearing and process that the Constitution requires.',
+    headline: 'The administration acknowledged deporting Kilmar Abrego Garcia in error, while the Supreme Court required it to facilitate his release and due process challenges continued.',
+    summary: 'A federal filing acknowledged that Abrego Garcia was sent to El Salvador despite an order protecting him from removal there. The Supreme Court directed the government to facilitate his release from Salvadoran custody, while separately requiring notice and an opportunity to challenge removals under the Alien Enemies Act. The administration says it is enforcing immigration law and disputes some allegations about individual detainees. This entry concerns legal procedure and compliance, not a general claim that noncitizens cannot be deported.',
+    sources: [
+      ['Due Process and the Abrego Garcia Case', 'FactCheck.org', 'Apr. 17, 2025', 'https://www.factcheck.org/2025/04/due-process-and-the-abrego-garcia-case/'],
+      ['Judges warn Trump risks public perception of lawlessness in his fight with courts', 'Reuters', 'Apr. 17, 2025', 'https://www.reuters.com/legal/trump-challenges-judges-probes-compliance-with-deportation-orders-2025-04-17/']
+    ]
+  },
+  {
+    id: 'court-orders', category: 'Constitutional restraint',
+    line: 'He has presided over agencies repeatedly chastised by federal judges for failing to obey their orders.',
+    headline: 'A Minnesota federal judge cited dozens of unfulfilled immigration-related court orders, and a separate judge found probable cause to investigate contempt in deportation flights.',
+    summary: 'During a large immigration operation, Chief Judge Patrick Schiltz ordered the ICE director to explain failures to comply with court orders; the immediate hearing was avoided when one wrongfully detained man was released. In another dispute, Judge James Boasberg found probable cause for criminal contempt in connection with flights to El Salvador, though an appellate court paused his ruling. These facts establish serious judicial findings and allegations of noncompliance, not a final contempt conviction.',
+    sources: [
+      ['US ICE releases man in Minnesota as agency head faced contempt', 'Reuters', 'Jan. 28, 2026', 'https://www.reuters.com/legal/government/us-ice-releases-man-minnesota-agency-head-faced-contempt-2026-01-28/'],
+      ['DOJ seeks to bar Minnesota judges from two cases over statements on Trump immigration surge', 'Reuters', 'Oct. 21, 2026', 'https://www.reuters.com/legal/government/doj-seeks-bar-minnesota-judges-two-cases-over-statements-trump-immigration-surge-2026-10-21/']
+    ]
+  },
+  {
+    id: 'central-bank', category: 'Institutional independence',
+    line: 'He has pressed the independent guardians of monetary policy with threats of official investigation.',
+    headline: 'The Justice Department’s criminal probe of Federal Reserve chair Jerome Powell was blocked after a judge deemed the subpoenas an improper attempt to influence interest rates.',
+    summary: 'Trump repeatedly urged the central bank to lower rates. Powell said a criminal-investigation threat concerning a costly renovation was intended to influence monetary decisions, a claim the administration disputed. In March 2026, a judge blocked the subpoenas; the government vowed to appeal and later dropped the case. Oversight of public construction spending is legitimate, but central-bank independence protects monetary policy from direct political coercion.',
+    sources: [
+      ['Statement from Federal Reserve Chair Jerome H. Powell', 'Federal Reserve Board', 'Jan. 11, 2026', 'https://www.federalreserve.gov/newsevents/speech/powell20260111a.htm'],
+      ['How DOJ went from investigating Powell to dropping case', 'Reuters', 'Apr. 24, 2026', 'https://www.reuters.com/world/us/how-doj-went-investigating-powell-dropping-case-2026-04-24/']
+    ]
+  },
+  {
+    id: 'academic-freedom', category: 'Institutional independence',
+    line: 'He has made public research funding a lever for demanding obedience from independent universities.',
+    headline: 'A federal judge ruled that the administration unlawfully canceled billions in Harvard research grants amid demands affecting university governance and speech.',
+    summary: 'The administration said funding conditions responded to antisemitism and civil-rights concerns on campus—serious matters requiring enforcement under law. Harvard argued the government instead used grants to coerce changes to its hiring, teaching, and governance. A federal judge ruled against roughly $2.2 billion in cancellations in September 2025; the administration pursued an appeal in October 2026. The case is distinct from whether individual universities adequately addressed discrimination.',
+    sources: [
+      ['Trump administration unlawfully cut Harvard’s funding, US judge rules', 'Reuters', 'Sep. 3, 2025', 'https://www.reuters.com/world/us/trump-administration-unlawfully-cut-harvards-funding-us-judge-rules-2025-09-03/'],
+      ['US appeals court weighs Trump’s block on Harvard research funding', 'Reuters', 'Oct. 5, 2026', 'https://www.reuters.com/legal/government/us-appeals-court-weighs-trumps-block-harvard-research-funding-2026-10-05/']
+    ]
+  },
+  {
+    id: 'civil-service', category: 'Institutional independence',
+    line: 'He has weakened the civil service’s insulation from personal and political command.',
+    headline: 'The administration created Schedule Policy/Career to make designated career policy-influencing posts easier to remove, changing long-standing employment protections.',
+    summary: 'OPM finalized the new personnel category in February 2026 and issued implementation guidance. The agency characterizes the reform as strengthening performance and accountability while retaining merit principles. Critics warn that removal of ordinary adverse-action protections can make expert public servants dependent on political favor. The documented action is the rule change; a universal purge of every career employee is not established by that rule alone.',
+    sources: [
+      ['OPM Finalizes Schedule Policy/Career Rule to Strengthen Accountability', 'U.S. Office of Personnel Management', 'Feb. 5, 2026', 'https://www.opm.gov/news/news-releases/opm-finalizes-schedule-policycareer-rule-to-strengthen-accountability/'],
+      ['Schedule Policy/Career: Implementation guidance', 'U.S. Office of Personnel Management', 'Feb. 2026', 'https://www.opm.gov/policy-data-oversight/hiring-information/hiring-authorities/schedule-policycareer/']
+    ]
+  },
+  {
+    id: 'farm-trade', category: 'Economic stewardship',
+    line: 'He has thrown American farm exports into uncertainty, requiring public relief for losses from disrupted trade.',
+    headline: 'U.S.–China tariff retaliation sharply reduced agricultural trade, and Washington allocated billions to help farmers weather market and input-cost disruptions.',
+    summary: 'Reuters reported USDA figures showing 2025 U.S. agricultural exports to China fell 65.7% year over year to $8.4 billion during the tariff conflict. USDA announced $11 billion in bridge payments for farmers, while the administration later announced additional harvest-fuel relief amid higher diesel costs. Diplomatic negotiations subsequently restored some shipments. Crop prices, energy markets, and farm income have multiple drivers, so not every difficulty can be attributed to a single tariff decision.',
+    sources: [
+      ['China signals tariff cuts, advances in farm market access after Trump-Xi summit', 'Reuters', 'May 16, 2026', 'https://www.reuters.com/world/china/china-signals-tariff-cuts-advances-farm-market-access-after-trump-xi-summit-2026-05-16/'],
+      ['Analysts say China less likely to buy US soy after Supreme Court decision', 'Reuters', 'Feb. 20, 2026', 'https://www.reuters.com/world/china/analysts-say-china-less-likely-buy-us-soy-after-supreme-court-decision-2026-02-20/'],
+      ['US to launch $8 billion support program for farmers to offset diesel costs, Trump says', 'Reuters', 'Oct. 20, 2026', 'https://www.reuters.com/world/us/us-launch-8-billion-support-program-farmers-offset-diesel-costs-trump-says-2026-10-20/']
+    ]
+  },
+  {
     id: 'private-gain', category: 'Public trust',
     line: 'He has made the powers of public office inseparable from the enrichment of his household.',
     headline: 'The president and his family have continued to profit from cryptocurrency enterprises while his administration shapes the industry’s rules.',

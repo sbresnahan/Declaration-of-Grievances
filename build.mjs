@@ -2,11 +2,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { grievances } from './content.mjs';
 import { research } from './research.mjs';
+import { choices } from './image-choices.mjs';
 
 const root = path.resolve('dist');
 const detailDir = path.join(root, 'grievances');
 fs.mkdirSync(detailDir, { recursive: true });
 fs.copyFileSync('styles.css', path.join(root, 'styles.css'));
+fs.copyFileSync('assets/social-preview.jpg', path.join(root, 'social-preview.jpg'));
+const images = JSON.parse(fs.readFileSync('image-credits.json', 'utf8'));
+// An illustration may be shared across related grievances; its original credit is retained.
+const sharedIllustrations = {
+  'tariff-costs':'canada', 'public-debt':'funding-freeze', 'health-coverage':'public-health',
+  'erroneous-deportation':'courthouse-arrests', 'court-orders':'lawyers',
+  'civil-service':'doge'
+};
+const imageFor = id => images[id] ?? images[sharedIllustrations[id]];
+if (grievances.some(g => !imageFor(g.id) || !(choices[g.id] || choices[sharedIllustrations[g.id]]))) {
+  throw new Error('Each grievance must have a credited image.');
+}
+fs.mkdirSync(path.join(root,'images'),{recursive:true});
+for (const [id,meta] of Object.entries(images)) {
+  fs.copyFileSync(path.join('assets',meta.src),path.join(root,meta.src));
+}
 
 const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const roman = n => {
@@ -24,10 +41,20 @@ const uniqueSources = g => {
   });
 };
 const totalSources = grievances.reduce((n,g) => n + uniqueSources(g).length, 0);
-const doc = ({title, description, body, inner=false}) => `<!doctype html>
+const siteOrigin = 'https://thegrievances.org';
+const socialImage = `${siteOrigin}/social-preview.jpg`;
+const doc = ({title, description, body, inner=false, canonicalPath='/', kind='website'}) => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f7f5ef"><meta name="description" content="${esc(description)}">
 <title>${esc(title)} — A Declaration of Grievances</title>
+<link rel="canonical" href="${siteOrigin}${esc(canonicalPath)}">
+<meta property="og:type" content="${kind}"><meta property="og:site_name" content="A Declaration of Grievances">
+<meta property="og:title" content="${esc(title)} — A Declaration of Grievances"><meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${siteOrigin}${esc(canonicalPath)}"><meta property="og:image" content="${socialImage}">
+<meta property="og:image:alt" content="Photograph of an armed federal agent breaking a vehicle window during an enforcement operation.">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)} — A Declaration of Grievances">
+<meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${socialImage}">
 <link rel="stylesheet" href="${inner?'../':''}styles.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f7f5ef'/%3E%3Cpath d='M14 16h36M14 32h36M14 48h36' stroke='%238e302c' stroke-width='5'/%3E%3C/svg%3E">
 </head><body>${body}</body></html>`;
 
@@ -48,7 +75,7 @@ const homepage = `<a class="skip" href="#grievances">Skip to grievances</a>
     <h1 class="masthead">A Declaration<br><em>of Grievances</em></h1>
     <div class="thick-rule"></div>
     <p class="preface dropcap">When public authority becomes an instrument of private benefit; when the force of government falls upon the governed; when the rights of the people and the promises made to allies are placed at the pleasure of one man—these acts deserve a plain recital.</p>
-    <p class="preface">We therefore set forth this record of grievances concerning the second administration of Donald J. Trump. Each charge is an <em>editorial interpretation</em> of documented events, supported by dated accounts, independent reporting, court rulings, and the administration’s response where available.</p>
+    <p class="preface">We therefore set forth this record of grievances concerning the second administration of Donald J. Trump. The standards are enduring ones: fiscal responsibility, limited government, constitutional restraint, public accountability, and the equal protection of law. Each charge is an <em>editorial interpretation</em> of documented events, supported by dated accounts, independent reporting, court rulings, and the administration’s response where available.</p>
     <div class="section-head" id="grievances"><span>THE GRIEVANCES</span><span>${grievances.length} ARTICLES <span aria-hidden="true">·</span> ${totalSources} SOURCES</span></div>
     <ol class="grievance-list">${homeItems}</ol>
     <div class="closing-mark" aria-hidden="true">❧</div>
@@ -66,7 +93,8 @@ grievances.forEach((g,i) => {
   const supplement = research[g.id] ?? {};
   const chronology = (supplement.events ?? []).map(([date,description]) => `<li><span class="event-date">${esc(date)}</span><span class="event-text">${esc(description)}</span></li>`).join('');
   const sequence = chronology ? `<section class="chronology-section" aria-labelledby="chronology-heading"><div class="section-head"><h2 id="chronology-heading">A DOCUMENTED SEQUENCE</h2><span>${supplement.events.length} MILESTONES</span></div><ol class="event-list">${chronology}</ol></section>` : '';
-  const note = supplement.note ? `<aside class="qualification"><h2>WHAT THE RECORD DOES NOT ESTABLISH</h2><p>${esc(supplement.note)}</p></aside>` : '';
+  const photo = imageFor(g.id);
+  const illustration = `<figure class="detail-figure"><img src="../${esc(photo.src)}" alt="${esc(photo.alt)}" loading="lazy" decoding="async"><figcaption>${esc(photo.caption)} <span class="image-credit">Image: ${esc(photo.author)} · <a href="${esc(photo.sourceUrl)}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · <a href="${esc(photo.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(photo.license)}</a></span></figcaption></figure>`;
   const page = `<a class="skip" href="#content">Skip to article</a><div class="page-wrap detail">
   <header class="topline"><a class="home-link" href="../index.html">← THE DECLARATION</a><span>ARTICLE ${roman(i+1)} OF ${roman(grievances.length)}</span></header>
   <main id="content">
@@ -75,21 +103,23 @@ grievances.forEach((g,i) => {
     <div class="thick-rule"></div>
     <div class="summary-label">THE RECORD SHOWS</div>
     <h1 class="detail-headline"><strong>${esc(g.headline)}</strong></h1>
+    ${illustration}
     <p class="summary-text">${esc(g.summary)}</p>
-    ${sequence}${note}
+    ${sequence}
     <section class="source-section" aria-labelledby="source-heading"><div class="section-head"><h2 id="source-heading">READ THE SOURCES</h2><span>${sourceItems.length} LINK${sourceItems.length!==1?'S':''}</span></div><ol class="source-list">${sources}</ol></section>
     <div class="detail-nav"><a href="${esc(previous.id)}.html" aria-label="Previous grievance">← <span>PREVIOUS</span></a><a href="../index.html">ALL GRIEVANCES</a><a href="${esc(next.id)}.html" aria-label="Next grievance"><span>NEXT</span> →</a></div>
   </main><footer class="footer"><span>AN EDITORIAL INTERPRETATION, NOT A LEGAL FINDING.</span><span><a href="../about.html">ABOUT &amp; METHODS ↗</a></span></footer>
 </div>`;
-  fs.writeFileSync(path.join(detailDir, `${g.id}.html`), doc({title:`${roman(i+1)} — ${g.category}`,description:g.headline,body:page,inner:true}));
+  fs.writeFileSync(path.join(detailDir, `${g.id}.html`), doc({title:`${roman(i+1)} — ${g.category}`,description:g.headline,body:page,inner:true,canonicalPath:`/grievances/${g.id}.html`,kind:'article'}));
 });
 
 const about = `<div class="page-wrap detail"><header class="topline"><a class="home-link" href="index.html">← THE DECLARATION</a><span>EDITORIAL NOTE</span></header>
 <main class="about-main"><div class="detail-overline">METHODS <span class="small-diamond">◆</span> OCTOBER 22, 2026</div><h1 class="about-title">On the record.</h1><div class="thick-rule"></div>
 <p>This website is an opinionated civic document modeled on the cadence of the American Declaration of Independence. It is not a government publication, a legal indictment, or an exhaustive catalog of the administration’s actions.</p>
 <p>Each grievance has a concise claim, a dated sequence, and clickable source headlines from identifiable publications or relevant official records. The homepage language is editorial. The detail pages distinguish documented actions from allegations, interpretations, contested responsibility, and legal outcomes where material.</p>
-<p>The ${grievances.length} entries provide ${totalSources} linked sources. News reporting and primary records are generally favored; advocacy-group accounts and opinion pieces are identified as such. The chronology marks some publication dates rather than original action dates. A separate qualification on each page explains an important limit of the evidence.</p>
+<p>The ${grievances.length} entries provide ${totalSources} linked sources. News reporting and primary records are generally favored; advocacy-group accounts and opinion pieces are identified as such. The chronology marks some publication dates rather than original action dates. Important uncertainty and qualifications remain within the relevant summaries and source material.</p>
+<p>Each entry contains an open-license photograph or image with a credit and licensing link. Some images depict the reported event; others illustrate an institution, person, or historical context and are labeled accordingly. Images do not independently substantiate the associated grievance.</p>
 <p>Sources were selected and checked as of <strong>October 22, 2026</strong>. News can change. A link represents a specific report at a specific time, not necessarily the final result of an investigation or lawsuit. External links open their original publisher's pages, which may have paywalls.</p>
 <p>The distinction matters: criticism is strongest when the record can be inspected.</p><a class="return-link" href="index.html">← RETURN TO THE GRIEVANCES</a></main><footer class="footer"><span>A DECLARATION OF GRIEVANCES</span><span>2025—2026</span></footer></div>`;
-fs.writeFileSync(path.join(root,'about.html'),doc({title:'About the record',description:'Editorial method and sourcing for A Declaration of Grievances.',body:about}));
+fs.writeFileSync(path.join(root,'about.html'),doc({title:'About the record',description:'Editorial method and sourcing for A Declaration of Grievances.',body:about,canonicalPath:'/about.html'}));
 console.log(`Generated homepage, about page, and ${grievances.length} grievance pages.`);

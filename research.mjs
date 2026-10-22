@@ -2,6 +2,94 @@
 // Dates refer to the action, court disposition, or publication as indicated.
 // Facts and attributed claims are kept separate; this is not a legal finding.
 export const research = {
+  'tariff-costs': {
+    events: [
+      ['2025', 'The effective U.S. import tariff rate rose sharply as new levies took effect.'],
+      ['February 2026', 'New York Fed researchers found that almost nine-tenths of tariffs passed into prices paid by U.S. importers.'],
+      ['April 2026', 'Federal Reserve Board economists estimated measurable tariff-driven increases in consumer-goods prices.']
+    ],
+    sources: [
+      ['The Anatomy of Tariff Pass-Through into Consumer Prices', 'Federal Reserve Bank of New York', 'Sep. 2026 revision', 'https://www.newyorkfed.org/research/staff_reports/sr1201'],
+      ['How Fast Do Tariffs Pass Through into Consumer Prices?', 'Federal Reserve Bank of New York', 'Oct. 6, 2026', 'https://libertystreeteconomics.newyorkfed.org/2026/10/how-fast-do-tariffs-pass-through-into-consumer-prices/']
+    ]
+  },
+  'public-debt': {
+    events: [
+      ['July 4, 2025', 'Public Law 119-21, the tax and spending reconciliation act, was signed.'],
+      ['July 21, 2025', 'CBO estimated a $3.4 trillion cumulative deficit increase for 2025–2034 under the updated January baseline.'],
+      ['August 11, 2025', 'CBO published its estimate that the resources of lower-income households would generally decline under the law.']
+    ], sources: []
+  },
+  'health-coverage': {
+    events: [
+      ['July 2025', 'The reconciliation law introduced Medicaid eligibility, financing, and verification changes.'],
+      ['October 2025', 'CBO estimated 7.5 million additional uninsured people in 2034 from the Medicaid-related chapter.'],
+      ['2026 onward', 'Several changes have future implementation dates; the projected coverage losses are not fully realized today.']
+    ], sources: []
+  },
+  'domestic-troops': {
+    events: [
+      ['Summer 2025', 'The administration deployed or federalized National Guard forces during Los Angeles immigration protests.'],
+      ['November 2025', 'A federal district judge barred the Portland deployment after finding no qualifying rebellion.'],
+      ['December 23, 2025', 'The Supreme Court declined to lift the preliminary block on the Chicago deployment.']
+    ], sources: [
+      ['Judge rules Trump illegally ordered National Guard to Portland, Oregon', 'Reuters via KSL', 'Nov. 7, 2025', 'https://www.ksl.com/article/51402039']
+    ]
+  },
+  'erroneous-deportation': {
+    events: [
+      ['March 2025', 'The government sent Kilmar Abrego Garcia to El Salvador despite a protective removal order.'],
+      ['April 10, 2025', 'The Supreme Court required the government to facilitate his release from Salvadoran custody.'],
+      ['April–May 2025', 'Federal courts continued to require procedural safeguards for people removed under the Alien Enemies Act.']
+    ], sources: [
+      ['US Supreme Court lets Trump use 1798 law for deportations, with limits', 'Reuters via ThePrint', 'Apr. 8, 2025', 'https://theprint.in/world/us-supreme-court-lets-trump-use-1798-law-for-deportations-with-limits/2581840/']
+    ]
+  },
+  'court-orders': {
+    events: [
+      ['April 2025', 'A federal judge found probable cause to pursue contempt over deportation flights; appellate review subsequently intervened.'],
+      ['January 2026', 'A Minnesota chief judge summoned the ICE director over numerous allegedly ignored judicial orders.'],
+      ['October 2026', 'The Justice Department sought recusal of two Minnesota judges who spoke publicly about the pressure on their court.']
+    ], sources: [
+      ['Trump judicial nominee pressured DOJ to defy court on deportations, whistleblower says', 'Reuters', 'Jun. 24, 2025', 'https://www.reuters.com/legal/government/trump-judicial-nominee-pressured-doj-defy-court-deportations-whistleblower-says-2025-06-24/']
+    ]
+  },
+  'central-bank': {
+    events: [
+      ['January 2026', 'Jerome Powell reported a criminal-investigation threat connected with the Fed headquarters renovation.'],
+      ['March 2026', 'A federal judge blocked subpoenas after finding improper pressure on the central bank.'],
+      ['April 2026', 'The Justice Department dropped the case after the confrontation over interest rates.']
+    ], sources: [
+      ['Fed’s Powell says Trump administration has threatened criminal indictment over his testimony', 'Reuters', 'Jan. 11, 2026', 'https://www.reuters.com/business/finance/feds-powell-says-administration-has-threatened-criminal-indictment-over-his-2026-01-12/']
+    ]
+  },
+  'academic-freedom': {
+    events: [
+      ['April 2025', 'Harvard sued after the government froze billions in research awards.'],
+      ['September 2025', 'A federal judge held that the mass grant cancellations were unlawful.'],
+      ['October 5, 2026', 'An appellate court heard the administration’s attempt to restore its authority to cancel the awards.']
+    ], sources: [
+      ['Harvard University sues to block Trump from slashing billions in research funding', 'Reuters', 'Apr. 21, 2025', 'https://www.reuters.com/legal/harvard-university-sues-trump-administration-media-reports-say-2025-04-21/']
+    ]
+  },
+  'civil-service': {
+    events: [
+      ['January 20, 2025', 'Trump ordered reclassification of certain career policy-influencing employees.'],
+      ['February 5, 2026', 'OPM finalized the Schedule Policy/Career regulations.'],
+      ['February–June 2026', 'OPM issued guidance to agencies implementing the new classification.']
+    ], sources: [
+      ['Implementing Guidance for Schedule Policy/Career Regulations', 'U.S. Office of Personnel Management', 'Feb. 2026', 'https://www.opm.gov/chcoc/latest-memos/opm-schedule-policycareer-implementation-guidance-memorandum.pdf']
+    ]
+  },
+  'farm-trade': {
+    events: [
+      ['2025', 'Retaliatory U.S.–China tariffs severely disrupted American agricultural shipments.'],
+      ['February 2026', 'Reuters reported near-record government payouts even as farmers faced another difficult income year.'],
+      ['May–October 2026', 'Negotiations restored some agricultural exports while new federal farm assistance was announced.']
+    ], sources: [
+      ['What role do farm products have in US-China trade deal?', 'Reuters', 'Aug. 28, 2025', 'https://www.reuters.com/world/china/what-role-do-farm-products-have-us-china-trade-deal-2025-08-28/']
+    ]
+  },
   'private-gain': {
     events: [
       ['2025–26', 'Family-linked cryptocurrency businesses operated while the executive branch reconsidered federal crypto regulation.'],
